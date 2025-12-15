@@ -1,6 +1,5 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+
 import "./App.css";
 import "./index.css";
 import React from "react";
@@ -12,15 +11,30 @@ function App() {
 
   return (
     <>
-    <div className=" top-0 z-[-2] h-full w-full bg-[#000000bf] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px]">
-    
+    <div className=" top-0 z-[-2] h-full w-full bg-[#000000e9] ">
+      
    <div className="text-3xl font-bold text-center h-screen flex justify-center items-center flex-col text-white ">
-   <p className="mb-10"> Namaste 🙏</p>
-    <div className=" shadow-white/30 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] bg-[#00000072] bg-opacity-50 p-5 rounded-xl">
-        <h3>
-         Welcome to <span className="text-yellow-300">Nikhil</span>’s Space. A place for ideas, projects, and learning{" "}
+  
+    <div className=" mx-5">
+       
+        <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-center mb-5">
+        Hi, I’m <span className='inline-flex animate-text-gradient bg-gradient-to-r from-[#a8c6fd] via-[#789cf9] to-[#2065f9] bg-[200%_auto] bg-clip-text  text-transparent'>
+      Nikhil Yadav
+    </span>.
+I build ideas, code, and real-world solutions
         </h3>
+
+       
       </div>
+       <div className=" w-35 h-15  text-white relative inline-block overflow-hidden rounded-full p-[2px] mt-10">
+   
+    {/* <span className='relative inline-block overflow-hidden rounded-full p-[2px]'> */}
+      <span className='absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#FFFFFF_0%,#2563EB_50%,#FFFFFF_100%)]' />
+      <div className='inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-gray-950 px-3 py-1 text-2xl font-medium text-gray-50 backdrop-blur-3xl'>
+        <a href="https://www.linkedin.com/in/nikhil0148">Contact</a>
+      </div>
+      </div>
+
       </div>
  <div className="flex justify-center items-center ">
       <h2 className="font-bold text-3xl text-white text-center mb-5">
@@ -40,7 +54,7 @@ function App() {
           />
         </div>
         <div className="mt-5 text-center max-w-xl">
-          <p >
+          <p className="font-semibold" >
             Hello! I'm Nikhil, a passionate developer and tech enthusiast. I
             love creating innovative solutions and exploring new technologies.
             In my free time, I playing badminton, watching movies, and listening
@@ -204,10 +218,8 @@ function App() {
       </div>
   <div className="flex justify-center items-center ">
       <h2 className="font-bold text-3xl text-white text-center mb-5">
-        Reach Out to Me
-      <span
-              class=" max-w-30 h-0.5 bg-white z-20 absolute left-0 right-0 mx-auto mt-1/2 block"
-            ></span>
+        Let’s Connect
+     <p className="text-xl text-gray-400">If you want to work together or talk about ideas, feel free to contact me.</p>
       </h2>
       </div>
       <div className="flex justify-center items-center gap-5 flex-wrap  ">
@@ -227,7 +239,7 @@ function App() {
   <p className="
     absolute top-1/5 left-1/2 -translate-x-1/2
     text-[12vw] font-extrabold
-    text-white/70
+    text-white
     whitespace-nowrap
     tracking-widest
     uppercase
