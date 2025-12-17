@@ -1,20 +1,89 @@
-import { useState } from "react";
+import { useState,useEffect, use } from "react";
 
 import "./App.css";
 import "./index.css";
 import React from "react";
-import { RiLinkedinFill , RiTwitterXLine , RiGithubLine , RiP2pLine , RiMailLine } from "@remixicon/react"
+import translations from "./js/translation.js";
+import { RiLinkedinFill , RiTwitterXLine , RiGithubLine , RiP2pLine , RiMailLine,RiMapPin2Line } from "@remixicon/react"
+
+
+
 
 function App() {
-  const [count, setCount] = useState(0);
+
+  const [showAlert, setShowAlert] = useState(false);
+
+  useEffect(() => {
+    document.title = `Nikhil Yadav`;
+  }, []);
+  useEffect(() => {
+   setShowAlert(true);
+    const timer = setTimeout(() => {
+      setShowAlert(false);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
+  const [isChecked, setIsChecked] = useState(false);
+  const [language, setLanguage] = useState("en");
+  
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+    setLanguage(isChecked ? "en" : "rj");
+
+  }
+  const t = translations[language];
+  
+
 
   return (
     <>
-      <div className=" top-0 z-[-2] h-full w-full bg-[#000000e9] myfont ">
-        <div className="text-3xl font-bold text-center h-screen flex justify-center items-center flex-col text-white ">
+    {
+      showAlert && (
+        <div className="fixed top-4 left-1/2 transform  -translate-x-1/2 bg-gray-500 text-white px-3 py-2 rounded shadow-lg z-50 flex items-center justify-between w-90 sm:w-190 max-w-md">
+          Hi! You can Switch Language between English and Rajasthani using the EN & RJ button at the top.
+          <button
+            className="ml-4 text-white font-bold"
+            onClick={() => setShowAlert(false)}
+          >
+            &times;
+          </button>
+        </div>
+      )
+    }
+    <div className=" top-0 z-[-2] h-full w-full bg-[#000000e9] myfont ">
+        <div className="flex justify-center w-full pt-5 text-white">
+        <label className="themeSwitcherTwo shadow-card relative inline-flex cursor-pointer select-none items-center justify-center rounded-md bg-black p-1">
+        <input
+          type="checkbox"
+          className="sr-only"
+          checked={isChecked}
+          onChange={handleCheckboxChange}
+        />
+
+        {/* English */}
+        <span
+          className={`flex items-center rounded py-2 px-[18px] text-sm font-medium ${!isChecked ? "text-primary bg-[#a7a7a7d0]" : "text-body-color"}`}
+        >
+          EN
+        </span>
+
+        {/* Rajasthani */}
+        <span
+          className={`flex items-center rounded py-2 px-[18px] text-sm font-medium ${
+            isChecked ? "text-primary bg-[#727272db]" : "text-body-color"
+          }`}
+        >
+          RJ
+        </span>
+      </label>
+
+      </div>
+            <div className="text-3xl font-bold text-center h-screen flex justify-center items-center flex-col text-white ">
+             
           <div className=" mx-5">
             <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-center mb-5">
-              Hi, I’m{" "}
+              {t.welcome}, I’m{" "}
               <span className="inline-flex animate-text-gradient bg-gradient-to-r from-[#a8c6fd] via-[#789cf9] to-[#2065f9] bg-[200%_auto] bg-clip-text  text-transparent footerBig">
                 Nikhil Yadav
               </span>
@@ -43,7 +112,7 @@ function App() {
         </div>
         <div className="flex justify-center items-center ">
           <h2 className="font-bold text-3xl text-white text-center mb-5">
-            About Me
+            {t.aboutText}
             <span class=" max-w-14 h-0.5 bg-white z-20 absolute left-0 right-0 mx-auto mt-1/2 block"></span>
           </h2>
         </div>
@@ -57,13 +126,8 @@ function App() {
             />
           </div>
           <div className="mt-5 text-center max-w-xl">
-            <p className="font-LostTumbler">
-              Hello! I'm Nikhil, a passionate developer and tech enthusiast. I
-              love creating innovative solutions and exploring new technologies.
-              In my free time, I playing badminton, watching movies, and
-              listening Music. Welcome to my personal space where I share my
-              projects and experiences. Let's connect and create something
-              amazing together!
+            <p className="font-LostTumbler text-lg sm:text-xl md:text-2xl lg:text-2xl text-white text-justify mx-5">
+              {t.about}
             </p>
           </div>
         </div>
@@ -72,7 +136,7 @@ function App() {
             Projects 
             <br/>
             <span class=" max-w-17 h-0.5 bg-white z-20 absolute left-0 right-0 mx-auto mt-1 block"></span>
-            <p className="text-[14px] text-gray-400 mt-3">(Construction In Progress , Coming Soon!)</p>
+            <p className="text-[14px] text-gray-400 mt-3">({t.process})</p>
           </h2>
         </div>
 
@@ -214,10 +278,9 @@ function App() {
         </div>
         <div className="flex justify-center items-center ">
           <h2 className="font-bold text-3xl text-white text-center mb-5">
-            Let’s Connect
+            {t.contact}
             <p className="text-xl text-gray-400">
-              If you want to work together or talk about ideas, feel free to
-              contact me.
+              {t.contacttext}
             </p>
           </h2>
         </div>
@@ -253,6 +316,11 @@ function App() {
           ><RiMailLine size="14px" />
             Email
           </a>
+        </div>
+        <div className="w-full flex justify-center items-center text-white mt-2 gap-2">
+<RiMapPin2Line size={18}/>
+<p>Chomu, Jaipur, Rajsthan.</p>
+
         </div>
         <div className="relative w-full h-26 sm:h-64 overflow-hidden">
           <p
