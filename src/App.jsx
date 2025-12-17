@@ -69,8 +69,10 @@ function App() {
         </div>
         <div className="flex justify-center items-center ">
           <h2 className="font-bold text-3xl text-white text-center my-15">
-            Projects(Construction In Progress , Coming Soon!)
+            Projects 
+            <br/>
             <span class=" max-w-17 h-0.5 bg-white z-20 absolute left-0 right-0 mx-auto mt-1 block"></span>
+            <p className="text-[14px] text-gray-400 mt-3">(Construction In Progress , Coming Soon!)</p>
           </h2>
         </div>
 
